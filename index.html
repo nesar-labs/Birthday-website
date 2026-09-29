@@ -89,7 +89,19 @@ h2{font-size:clamp(1.9rem,6vw,3rem);line-height:1.1;margin:0 0 8px;font-weight:8
 .in{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
 .card.flip .in{transform:rotateY(180deg)}
 .f,.b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;box-shadow:0 10px 26px rgba(0,0,0,.45)}
-.f{background:#fff;padding:10px 10px 50px}
+.f {
+    background: #fff;
+    padding: 10px 10px 50px;
+    
+    /* ADD THESE 4 LINES TO FIX THE ZERO SIZE */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    box-sizing: border-box; /* Ensures padding doesn't push the image out */
+}
 .f img{width:100%;height:100%;object-fit:cover;border-radius:5px;display:block}
 .f span{position:absolute;left:0;right:0;bottom:11px;font-size:1.5rem;color:var(--navy);line-height:1}
 .b{transform:rotateY(180deg);background:var(--cream);color:var(--navy);padding:20px 22px;display:flex;align-items:center;justify-content:center;font-size:1.45rem;line-height:1.3}
