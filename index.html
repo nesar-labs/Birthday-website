@@ -89,13 +89,13 @@ footer p{margin:0}footer .hand{font-size:2rem;color:var(--gold)}
 </head>
 <body class="">
 
-<header id="intro" hidden="">
+<header id="intro">
   <h1>Happy Birthday!!!</h1>
   <p class="from hand">From Nesar, your Sahi beta 💙</p>
-  <button class="btn" id="go" disabled="">Start</button>
+  <button class="btn" id="go" >Start</button>
 </header>
 
-<svg id="rocket" viewBox="0 0 70 150" aria-hidden="true" style="display: none;">
+<svg id="rocket" viewBox="0 0 70 150" aria-hidden="true">
   <path d="M35 0C52 22 56 55 52 95H18C14 55 18 22 35 0Z" fill="#fff4dc"></path>
   <path d="M35 0C43 10 48 20 50 30H20C22 20 27 10 35 0Z" fill="#ff4d5e"></path>
   <circle cx="35" cy="56" r="11" fill="#14245c" stroke="#ffc94d" stroke-width="4"></circle>
@@ -105,7 +105,7 @@ footer p{margin:0}footer .hand{font-size:2rem;color:var(--gold)}
 </svg>
 <div id="fx"></div><div id="smoke" style="opacity: 0; transition: opacity 1.6s;"></div><canvas id="cf" width="773" height="599"></canvas><div id="sky"></div>
 
-<main id="main">
+<main id="main" hidden>
   <section class="hero">
     <div class="badge" id="badge" role="button" tabindex="0" aria-label="Best Papa badge"><b>BEST</b><span>PAPA</span></div>
     <h1>Happy Birthday, Papa!</h1>
@@ -186,6 +186,17 @@ const bd=$('#badge');bd.onclick=()=>{confetti(bd.getBoundingClientRect().left+95
 $('#gift').onclick=function(){if(this.classList.contains('open'))return;this.classList.add('open');const r=this.getBoundingClientRect();confetti(r.left+r.width/2,r.top+20,130);$('#hint').hidden=true;$('#msg').hidden=false;setTimeout(()=>$('#msg').scrollIntoView({behavior:'smooth',block:'center'}),400)};
 document.querySelectorAll('.card').forEach(c=>c.onclick=()=>c.classList.toggle('flip'));
 $('#obj').onclick=()=>{$('#court').animate([{transform:'translateX(0)'},{transform:'translateX(-12px)'},{transform:'translateX(12px)'},{transform:'translateX(-7px)'},{transform:'translateX(0)'}],{duration:380});$('#verdict').hidden=false;confetti(innerWidth/2,innerHeight*.65,80)};
+    document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        const inner = card.querySelector('.in');
+        // Toggle the rotation
+        if (inner.style.transform === 'rotateY(180deg)') {
+            inner.style.transform = 'rotateY(0deg)';
+        } else {
+            inner.style.transform = 'rotateY(180deg)';
+        }
+    });
+});
 </script>
 
 
